@@ -8,10 +8,9 @@ import {GridToolbar} from '@progress/kendo-react-grid';
 // Used for sorting and filtering grid content
 import { orderBy, SortDescriptor, filterBy, CompositeFilterDescriptor, FilterDescriptor} from '@progress/kendo-data-query';
 import { ExcelExport } from '@progress/kendo-react-excel-export';
-import { GridPDFExport, PDFExport } from '@progress/kendo-react-pdf';
+import { GridPDFExport } from '@progress/kendo-react-pdf';
 
 import sampleProducts from './data/products.json';
-import { number } from 'prop-types';
 
 interface ProductCategory {
   CategoryID : number,
@@ -129,7 +128,10 @@ class App extends Component<AppProps, AppState> {
               <GridColumn field="UnitsInStock" title="Count"                filter="numeric" editor="numeric"/>
             </Grid>
         </ExcelExport>
-        <GridPDFExport ref={(element) => { this._pdfExporter = element; }}>
+        <GridPDFExport 
+          ref={(element) => { this._pdfExporter = element; }}
+          margin="0.5cm"
+        >
           <Grid
             data={products}
           >
